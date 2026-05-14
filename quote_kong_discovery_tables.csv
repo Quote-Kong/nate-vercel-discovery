@@ -1,0 +1,53 @@
+TableName,ColumnName,DataType,Key/Relationship,Description
+DiscoveryConfig,DiscoveryConfigID,INT,PK,Unique identifier for the configuration record.
+DiscoveryConfig,CompanyID,INT,FK (Company),Associates settings with a specific company.
+DiscoveryConfig,WelcomeMessage,TEXT,NULL,Global welcome text for the discovery app.
+DiscoveryConfig,ThankYouMessage,TEXT,NULL,Global thank you text for completion.
+DiscoveryConfig,ContactPromptText,TEXT,NULL,Text prompting for contact info.
+DiscoveryConfig,AddedBy,VARCHAR,NULL,User who added the record.
+DiscoveryConfig,AddedOn,DATETIME,NULL,Creation timestamp.
+DiscoveryConfig,ChangedBy,VARCHAR,NULL,User who last modified.
+DiscoveryConfig,ChangedOn,DATETIME,NULL,Last modification timestamp.
+DiscoveryProjectType,DiscoveryProjectTypeID,INT,PK,Unique identifier for the project type configuration.
+DiscoveryProjectType,CompanyID,INT,FK (Company),Company owning this project type configuration.
+DiscoveryProjectType,ProjectTypeName,VARCHAR,NULL,Name of the project type (e.g. Kitchen Renovation).
+DiscoveryProjectType,SubAreas,VARCHAR,NULL,Comma-separated list of sub areas allowed for this project type.
+DiscoveryProjectType,AddedBy,VARCHAR,NULL,User who added the record.
+DiscoveryProjectType,AddedOn,DATETIME,NULL,Creation timestamp.
+DiscoveryProjectType,ChangedBy,VARCHAR,NULL,User who last modified.
+DiscoveryProjectType,ChangedOn,DATETIME,NULL,Last modification timestamp.
+DiscoveryPainPoint,PainPointOptionID,INT,PK,Unique identifier for the pain point.
+DiscoveryPainPoint,DiscoveryProjectTypeID,INT,FK (DiscoveryProjectType),Link to the project type this pain point applies to.
+DiscoveryPainPoint,PainPointText,VARCHAR,NULL,Text content describing the pain point.
+DiscoveryPainPoint,AddedBy,VARCHAR,NULL,User who added the record.
+DiscoveryPainPoint,AddedOn,DATETIME,NULL,Creation timestamp.
+DiscoveryPainPoint,ChangedBy,VARCHAR,NULL,User who last modified.
+DiscoveryPainPoint,ChangedOn,DATETIME,NULL,Last modification timestamp.
+DiscoveryBudgetConfig,DiscoveryBudgetConfigID,INT,PK,Unique identifier for the budget config.
+DiscoveryBudgetConfig,DiscoveryProjectTypeID,INT,FK (DiscoveryProjectType),Link to the project type.
+DiscoveryBudgetConfig,SliderTrackMin,INT,NULL,Minimum allowed boundary for the slider.
+DiscoveryBudgetConfig,SliderTrackMax,INT,NULL,Maximum allowed boundary for the slider.
+DiscoveryBudgetConfig,DefaultHandleMin,INT,NULL,Default start value for the lower range.
+DiscoveryBudgetConfig,DefaultHandleMax,INT,NULL,Default start value for the upper range.
+DiscoveryBudgetConfig,StepAmount,INT,NULL,Increment amount for the slider in dollars.
+DiscoveryBudgetConfig,AddedBy,VARCHAR,NULL,User who added the record.
+DiscoveryBudgetConfig,AddedOn,DATETIME,NULL,Creation timestamp.
+DiscoveryBudgetConfig,ChangedBy,VARCHAR,NULL,User who last modified.
+DiscoveryBudgetConfig,ChangedOn,DATETIME,NULL,Last modification timestamp.
+CompanyStory,StoryID,INT,PK,Unique identifier for the story/testimonial.
+CompanyStory,DiscoveryProjectTypeID,INT,FK (DiscoveryProjectType),Link to project type.
+CompanyStory,StoryText,TEXT,NULL,Main testimonial text.
+CompanyStory,AuthorName,VARCHAR,NULL,Author of the testimonial.
+CompanyStory,AuthorPhotoUrl,VARCHAR,NULL,URL to the author's portrait photo.
+CompanyStory,RenovationPhotoUrl,VARCHAR,NULL,URL to the renovation outcome photo.
+CompanyStory,AddedBy,VARCHAR,NULL,User who added the record.
+CompanyStory,AddedOn,DATETIME,NULL,Creation timestamp.
+CompanyStory,ChangedBy,VARCHAR,NULL,User who last modified.
+CompanyStory,ChangedOn,DATETIME,NULL,Last modification timestamp.
+Submissions,SubmissionID,INT,PK,Unique ID for the stored submission data.
+Submissions,CompanyID,INT,FK (Company),Company generating the submission.
+Submissions,DiscoveryProjectTypeID,INT,FK (DiscoveryProjectType),The project type selected by the homeowner.
+Submissions,PayloadJSON,TEXT,NULL,The raw JSON output of homeowner answers.
+Submissions,CreatedAt,DATETIME,NULL,When the submission was made.
+Submissions,AddedBy,VARCHAR,NULL,User/System tracking execution.
+Submissions,AddedOn,DATETIME,NULL,Creation timestamp.
